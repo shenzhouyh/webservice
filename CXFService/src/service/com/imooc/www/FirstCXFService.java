@@ -16,7 +16,10 @@ public class FirstCXFService {
 		factory.setAddress("http://localhost:8085/firstService");
 		//设置实现类
 		factory.setServiceClass(FirstCXFService.class);
-		
+		//拦截请求的链接，打印相关信息
+		factory.getInInterceptors().add(new LoggingInInterceptor());
+		//拦截响应的链接，打印相关信息
+		factory.getOutInterceptors().add(new LoggingInInterceptor());
 		
 		//启动服务
 		factory.create();
